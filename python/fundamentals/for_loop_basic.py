@@ -1,5 +1,5 @@
     
-""" 
+
 print("Ejercicio 1")
 for x in range(151):
     print(x)
@@ -28,12 +28,12 @@ while i < 500000:
     
     i +=1
 
-print("La suma de los numeros impares es:",sum) """
+print("La suma de los numeros impares es:",sum)
 
-""" print("Ejercicio 5")
+print("Ejercicio 5")
 for y in range(2018, 1, -5):
     print(y)
- """
+ 
 
 print("Ejercicio 6")
 lowNum=2
