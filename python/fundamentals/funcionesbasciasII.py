@@ -18,7 +18,7 @@ def ejercicio2():
    
 ejer2=ejercicio2() 
 
-""" print('Ejercicio3')
+print('Ejercicio3')
 def ejercicio3():
     num=[]
     for x in range(5):
@@ -30,7 +30,7 @@ def ejercicio3():
     print("El Primer valor de la lista mas la longitud de la lista es",var)
 
     return num
-ejer3=ejercicio3() """
+ejer3=ejercicio3()
 
 print('Ejercicio4')
 def ejercicio4():   
