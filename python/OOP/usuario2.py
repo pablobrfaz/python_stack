@@ -8,7 +8,10 @@ class User:
 
     def ake_withdrawal (self, username, amount):
         self.name = username
-        self.account_balance -= amount
+        if(self.account_balance - amount)>0:  
+            self.account_balance -= amount
+        else:
+            print("No tiene el dinero suficiente")
         return self
     
     def make_deposit(self, other_user, amount):
