@@ -1,41 +1,31 @@
-
 class BankAccount:
-	def __init__(self, name): 
-            self.name= name
-            self.int_rate = 0.02
-            self.balance = 0
+    def __init__(self,name,init_rate=0,balance=0,num_cuenta=0 ):
+        self.name= name
+        self.init_rate=init_rate/100
+        self.balance=balance
+        self.num_cuent=num_cuenta
+    def deposit(self, amount,num_cuent):
+        self.num_cuent= num_cuent
+        self.balance+=amount
+        return self
+    def withdraw(self, amount,num_cuent):
+        self.num_cuent=num_cuent
+        if(self.balance-amount)>0:
+            self.balance-=amount
+        else:
+            print("DINERO INSUFICIENTE")
+        return self
+    def display_account_info(self):
+        return " Su saldo es:" + str(self.balance) +" Cuenta :"+self.num_cuent
+    def yield_intereste(self):
+        if(self.balance>0):
+            aux=self.balance*self.init_rate
+            self.balance+=aux
+        return self
 
-	def deposit(self, amount):
-		self.balance += amount
-                
-               
-	def withdraw(self, amount):
-		if amount > 0:
-                 self.balance -= amount
-                 print(self.balance)
-                 return self
-                          
-                
-                
-
-	def display_account_info(self):
-            print(self)
-
-
-	def yield_interest(self, amount):
-            if amount >0:
-                self.balance = self.balance *self.int_rate 
-                print("El interes de la cuenta es",self.balance)
-                return self
-                
 
 cuenta1 = BankAccount("cuenta1")
-cuenta2 = BankAccount("cuenta2")
+cuenta1.deposit(120,"123")
+cuenta1.withdraw(100,"123")
+print(cuenta1.name, cuenta1.balance)
 
-
-cuenta1.deposit(700)
-cuenta1.deposit(600)
-cuenta1.withdraw(11)
-print(cuenta1.balance, cuenta1.name)
-
-cuenta1.yield_interest(600)
