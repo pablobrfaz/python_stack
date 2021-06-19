@@ -2,7 +2,7 @@ from django.http.response import JsonResponse
 from django.shortcuts import HttpResponse, redirect
 
 def root(request):
-    return redirect("/blogs")
+    return redirect("blogs/")
 
 def index(request):
     return HttpResponse("placeholder para luego mostrar una lista de todos los blogs2")
