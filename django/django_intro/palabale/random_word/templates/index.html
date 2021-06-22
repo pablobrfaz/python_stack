@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Palabras Aleatorias</title>
+    {% load static %}
+</head>
+<body>
+        
+    <h1>Es la palabra número:  {{valor}}</h1>
+    
+    <p>{{get_random_string}}</p>
+    <input type="button" value="Actualizar" onclick="location.reload()"/>
+</body>
+</html>
