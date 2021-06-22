@@ -1,0 +1,14 @@
+h1 {
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    border: black 3px solid;
+}
+
+p {
+    color: black;
+    text-align: center;
+    font-size: 30px;
+    border: black 3px solid;
+    padding: 80px
+}
