@@ -8,10 +8,13 @@
     {% load static %}
 </head>
 <body>
-        
-    <h1>Es la palabra número:  {{valor}}</h1>
+    {% csrf_token %}
+    <h1>Es la palabra número:  (attempt #: {{request.session.count}})</h1>
     
     <p>{{get_random_string}}</p>
     <input type="button" value="Actualizar" onclick="location.reload()"/>
+    <!-- <input type="button" value="Actualizar" onclick="location.href='palabra_random'"/> -->
+    <input type="button" value="Reiniciar" onclick="location.href='reset'">
+      
 </body>
 </html>
