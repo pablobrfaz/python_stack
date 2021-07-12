@@ -1,7 +1,7 @@
 from django.shortcuts import  redirect
 from django.http.response import HttpResponse
 
-def index(request):
+def index1(request):
     return redirect("/register")
 
 def encuestas(request):
