@@ -1,0 +1,32 @@
+>>> users.objects.create(first_name="Pablo", last_name="Bravo", email_address="pablojbravofaz@gmail.com", age='26')     
+Usuarios: Pablo Bravo pablojbravofaz@gmail.com 26
+>>> users.objects.create(first_name="Luis", last_name="Bravo", email_address="lbravo@gmail.com", age='67')           
+Usuarios: Luis Bravo lbravo@gmail.com 67
+>>> users.objects.create(first_name="Felipe", last_name="Bravo", email_address="lfbravofaz@gmail.com", age='35')  
+Usuarios: Felipe Bravo lfbravofaz@gmail.com 35
+>>> users.objects.all()
+<QuerySet [Usuarios: Pablo Bravo pablojbravofaz@gmail.com 26, Usuarios: Luis Bravo lbravo@gmail.com 67, Usuarios: Felipe Bravo lfbravofaz@gmail.com 35]>
+>>> users.objects.first() 
+Usuarios: Pablo Bravo pablojbravofaz@gmail.com 26
+>>> users.objects.last()  
+Usuarios: Felipe Bravo lfbravofaz@gmail.com 35
+
+>>> cambio = users.objects.get(id=3)
+>>> cambio.last_name = "Pancakes"
+>>> cambio.save()
+>>> users.objects.last()
+Usuarios: Felipe Pancakes lfbravofaz@gmail.com 35
+
+borrar
+>>> borrar = users.objects.get(id=2) 
+>>> borrar.delete()
+(1, {'users_app.users': 1})
+>>> users.objects.all()   
+<QuerySet [Usuarios: Pablo Bravo pablojbravofaz@gmail.com 26, Usuarios: Felipe Pancakes lfbravofaz@gmail.com 35]>
+>>>
+
+>>> users.objects.all().order_by("first_name")
+<QuerySet [Usuarios: Felipe Pancakes lfbravofaz@gmail.com 35, Usuarios: Pablo Bravo pablojbravofaz@gmail.com 26]>
+>>> users.objects.all().order_by("-first_name") 
+<QuerySet [Usuarios: Pablo Bravo pablojbravofaz@gmail.com 26, Usuarios: Felipe Pancakes lfbravofaz@gmail.com 35]>
+>>>
