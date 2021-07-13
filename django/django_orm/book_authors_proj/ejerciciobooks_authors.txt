@@ -1,0 +1,72 @@
+-crear cinco libros -
+>>> c_sharp = book.objects.create(title = "C Sharp", desc = "Libro de Programacion de C#")
+>>> java = book.objects.create(title = "Java", desc = "Libro de Programacion de Java")       
+>>> python = book.objects.create(title = "Python", desc = "Libro de Programacion de Python") 
+>>> php = book.objects.create(title = "PHP", desc = "Libro de Programacion de PHP")          
+>>> ruby = book.objects.create(title = "Ruby", desc = "Libro de Programacion de Ruby") 
+
+-crear cinco autores-
+>>> jana_austen = author.objects.create(first_name = "Jana", last_name = "Austen") 
+>>> emily_dickinson = author.objects.create(first_name = "Emily", last_name = "Dickinson") 
+>>> fyodor_dostoevksy = author.objects.create(first_name = "Fyodor", last_name = "Dostoevksy") 
+>>> william_shakespeare = author.objects.create(first_name = "William", last_name = "Shakespeare") 
+>>> lau_tzu = author.objects.create(first_name = "Lau", last_name = "Tzu") 
+
+ 
+-agregar campo notas-
+    - Add field notas to author
+
+-cambiar el nombre de c_sharp-
+>>> c_sharp = book.objects.get(id=1)
+>>> c_sharp.title = "C #"
+>>> c_sharp.save()
+
+-cambiar nombre de 4to autor-
+>>> cambio = author.objects.get(id=4)   
+>>> cambio.first_name = "Bill"
+>>> cambio.save()
+
+-asigne al primer autor los 2 primeros libros -
+
+>>> libro1 = book.objects.get(id=1)
+>>> libro2 = book.objects.get(id=2) 
+>>> autor1 = author.objects.get(id=1)
+>>> autor2.book.objects.add(libro1, libro2)
+
+-asigne al segundo autor los 3 primeros libros-
+>>> autor2 = author.objects.get(id=2)        
+>>> libro1 = book.objects.get(id=1)          
+>>> libro2 = book.objects.get(id=2)   
+>>> libro3 = book.objects.get(id=3) 
+>>> autor2.books.add(libro1, libro2, libro3)
+
+-asigne al tercer autor los 4 primeros libros-
+>>> autor3 = author.objects.get(id=3) 
+>>> libro4 = book.objects.get(id=4)           
+>>> autor3.books.add(libro1, libro2, libro3, libro4) 
+
+-asigne al cuarto autor todos los libros-
+>>> libro5 = book.objects.get(id=5) 
+>>> autor4 = author.objects.get(id=4) 
+>>> autor4.books.add(libro1, libro2, libro3, libro4, libro5) 
+
+-recupera todos los autores del tercer libro-
+>>> author.objects.filter(books=book.objects.get(id=3)) 
+<QuerySet [<author: author object (2)>, <author: author object (3)>, <author: author object (4)>]>
+
+-eliminar el primer autor del tercer libro-
+>>> eliminar_autor = author.objects.filter(books=book.objects.get(id=3)) 
+>>> libro3.authors.remove(eliminar_autor[0]) 
+
+-agregar el quinto autor como uno de los autores del 2do libro-
+>>> autor5 = author.objects.get(id=5)
+>>> libro2 = book.objects.get(id=2)          
+>>> libro2.authors.add(autor5)   
+
+-encuentra todos los libros de los que el tercer autor es parte-
+>>> book.objects.filter(authors=author.objects.get(id=3)) 
+<QuerySet [<book: book object (1)>, <book: book object (2)>, <book: book object (3)>, <book: book object (4)>]>
+
+-encuentra todos los autores que participaron en el quinto libro-
+>>> author.objects.filter(books=book.objects.get(id=5)) 
+<QuerySet [<author: author object (4)>, <author: author object (5)>]>
