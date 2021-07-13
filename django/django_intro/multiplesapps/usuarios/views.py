@@ -1,10 +1,10 @@
 from django.shortcuts import  redirect
 from django.http.response import HttpResponse
 
-def index1(request):
+def index(request):
     return redirect("/register")
 
-def encuestas(request):
+def register(request):
     return HttpResponse("marcador de posición para que los usuarios creen un nuevo registro de usuario")
 
 def login(request):
