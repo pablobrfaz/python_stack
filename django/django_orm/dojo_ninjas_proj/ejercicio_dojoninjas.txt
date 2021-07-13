@@ -1,0 +1,49 @@
+-crear dojos-
+>>> new_dojo = dojos.objects.create(name = "DojoNorte", city = "Quito", state = "Pichincha") 
+>>> new_dojo = dojos.objects.create(name = "DojoSur", city = "Tulcan", state = "Carchi")     
+>>> new_dojo = dojos.objects.create(name = "DojoCentro", city = "Otavalo", state = "Imbabura") 
+
+-borrar dojos-
+>>> borrar = dojos.objects.get(id=1)
+>>> borrar.delete()
+>>> borrar = dojos.objects.get(id=2) 
+>>> borrar.delete()
+>>> borrar = dojos.objects.get(id=3)
+>>> borrar.delete()
+
+-crear dojos-
+>>> new_dojo = dojos.objects.create(name = "Norte", city = "Quito", state = "Pichincha") 
+>>> new_dojo = dojos.objects.create(name = "Sur", city = "Tulcan", state = "Carchi")     
+>>> new_dojo = dojos.objects.create(name = "Centro", city = "Otavalo", state = "Imbabura")
+
+-crear 3 ninjas 1er dojo-
+>>> new_ninja = ninjas.objects.create(dojo = dojos.objects.get(id=4), first_name= "Pablo", last_name= "Bravo") 
+>>> new_ninja = ninjas.objects.create(dojo = dojos.objects.get(id=4), first_name= "Jose", last_name= "Bravo")  
+>>> new_ninja = ninjas.objects.create(dojo = dojos.objects.get(id=4), first_name= "Felipe", last_name= "Bravo") 
+
+-crear 3 ninjas 2do dojo-
+>>> new_ninja = ninjas.objects.create(dojo = dojos.objects.get(id=5), first_name= "Carolina", last_name= "Bravo") 
+>>> new_ninja = ninjas.objects.create(dojo = dojos.objects.get(id=5), first_name= "Santiago", last_name= "Bravo") 
+>>> new_ninja = ninjas.objects.create(dojo = dojos.objects.get(id=5), first_name= "David", last_name= "Bravo") 
+
+-crear 3 ninjas 3er dojo-
+>>> new_ninja = ninjas.objects.create(dojo = dojos.objects.get(id=6), first_name= "Jorge", last_name= "Faz")   
+>>> new_ninja = ninjas.objects.create(dojo = dojos.objects.get(id=6), first_name= "Lucia", last_name= "Pinto") 
+>>> new_ninja = ninjas.objects.create(dojo = dojos.objects.get(id=6), first_name= "Nicole", last_name= "Buitron") 
+
+-recuperar ninja primer dojo-
+>>> this_dojo =  dojos.objects.get(id=4)                       
+>>> ninja = ninjas.objects.filter(dojo= this_dojo)
+
+-recuperar ninja ultimo dojo-
+>>> this_dojo =  dojos.objects.get(id=6)                       
+>>> ninja = ninjas.objects.filter(dojo= this_dojo)
+
+-recuperar ultimo dojo ninja-
+>>> dojos.objects.last() 
+
+-crea un nuevo campo desc-
+ desc = models.TextField(null=True)
+
+-crea un nuevo dojo-
+>>> new_dojo = dojos.objects.create(name = "Centro", city = "Ibarra", state = "Ibarra", desc = "antiguo") 
