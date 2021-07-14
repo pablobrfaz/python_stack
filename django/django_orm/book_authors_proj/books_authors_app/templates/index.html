@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Libros Autores </title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% csrf_token %}
+    <form action="/" method="POST">
+        {% csrf_token %}
+        <div class="div1">
+            <p class="p1">Add a Book:</p>
+        
+            <label for="titletext" class="title">Title:</label>
+            <input type="text" class="imptitle " name="titulo" >
+   
+            <label for="desctext" class="form-label">Description:</label>
+            <textarea class="form-control" name="description" ></textarea>
+    
+            <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+    </form>
+</div>
+<div class="div2">
+    <table class="table1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Action</th>
+        </tr>
+        {% for book in all %}
+            <tr>
+                <td>{{ book.id }}</td>
+                <td>{{ book.title }}</td>
+                <td><a href="/books/{{book.id}}">View</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>

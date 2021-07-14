@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Libros Autores </title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="div">
+        <h1>{{ selecauthor.first_name }} {{ selecauthor.last_name }}</h1>
+        <br>
+        <h2>ID: {{ selecauthor.id }}</h2>
+        <label for="book_desc">Notes:</label>
+        <br>
+        <br>
+        <textarea disabled name="book_desc" cols="30" rows="2">{{ selecauthor.notas }}</textarea>
+        <hr>
+        <br>
+        <h3>Books: </h3>
+        <br>
+        <ul>
+            {% for book in selecbook %}
+            <li>
+                {{ book.title }}
+            </li>
+            {% endfor %}
+            <form action="/authors/{{selecauthor.id}}" method="POST">
+            {% csrf_token %}
+            <select name="auth_select">
+            {% for books in notbooks %}
+                <option value="{{ books.id }}">{{ books.title }}</option>    
+            {% endfor %}
+            </select>
+            <button type="submit" class="btn btn-primary">Add</button>
+            </form>
+        </ul>
+        <br>
+        
+        
+
+    </div>
+    
+</body>
+</html>
