@@ -1,0 +1,33 @@
+h3 {
+    display: inline-block;
+    text-align: center;
+
+}
+
+.borde {
+    
+    border: black 3px solid;
+    
+}
+
+div.div1{
+    min-height: 80px;
+    width: 150px;
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 15px;
+    border: black 3px solid;
+
+}
+div.div4{
+    min-height: 80px;
+    width: 750px;
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 15px;
+    border: black 3px solid; 
+}
