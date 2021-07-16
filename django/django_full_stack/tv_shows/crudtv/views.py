@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import showtv
+from django.contrib import messages
+from django.db.models.expressions import Value
 
 def index(request):
     return redirect("/shows")
@@ -17,16 +19,22 @@ def nuevo_show(request):
     return render(request, 'nuevoshow.html')
 
 def crear_show(request):
-    nuevo_show = showtv.objects.create(
+    errors = showtv.objects.form_validator(request.POST)
+    if len(errors) > 0:
+        for key, value in errors.items():
+            messages.error(request,value)
+        return redirect('/shows/new')
+    else:
+        nuevo_show = showtv.objects.create(
                 title = request.POST['titleInput'],
                 network = request.POST['networkInput'],
                 release_date = request.POST['dateInput'],
                 description = request.POST['descriptionInput'],
             )
-    context = {
+        context = {
                 'nuevo_show' : nuevo_show
             }
-    return render(request, 'mostrar_show.html',context)
+        return render(request, 'mostrar_show.html',context)
 
 def read_show(request,number):
     nuevo_show = showtv.objects.get(id=number)
@@ -41,9 +49,31 @@ def borrar_show(request,number):
     return redirect('/shows')
 
 def edit_show(request,number):
+    if request.method == "POST":
+        errors = showtv.objects.form_validator(request.POST)
+        if len(errors) > 0:
+            edit_show = showtv.objects.get(id=number)
+            context = {
+                    'nuevo_show' : edit_show
+            }
+            for key, value in errors.items():
+                messages.error(request,value)
+            context['up_date']= str(context['nuevo_show'].release_date)
+            return render(request, 'modificar.html',context)
+        else:
+            update_show = showtv.objects.get(id=request.POST['show_id'])
+            update_show.title = request.POST['titleInput']
+            update_show.network = request.POST['networkInput']
+            update_show.release_date = request.POST['dateInput']
+            update_show.description = request.POST['descriptionInput']
+            update_show.save()
+            context = {
+                'nuevo_show' : update_show
+            }
+            return render(request, 'mostrar_show.html',context)
     edit_show = showtv.objects.get(id=number)
     context = {
-        'new_show' : edit_show
+        'nuevo_show' : edit_show
         }
-    context['up_date']= str(context['new_show'].release_date)
+    context['up_date']= str(context['nuevo_show'].release_date)
     return render(request, 'modificar.html',context)

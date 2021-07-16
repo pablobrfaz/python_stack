@@ -10,7 +10,15 @@
     <div class="container">
         <form action="/shows/create" method="POST">
             {% csrf_token %}
+            <input type="hidden" name="is_edit" value="no">
             <h2>Add a New Show</h2>
+            {% if messages %}
+            {% for message in messages %}
+            <ul>
+                <li style="color: brown;">{{message}}</li>
+            </ul>
+            {% endfor %}
+            {% endif %}
             <br><br>
             <div>
                 <label for="titleInput" class="form-label">Title:</label>
