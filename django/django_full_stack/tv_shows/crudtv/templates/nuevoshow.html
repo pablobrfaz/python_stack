@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear un Nuevo Show</title>
+</head>
+<body>
+    <div class="container">
+        <form action="/shows/create" method="POST">
+            {% csrf_token %}
+            <h2>Add a New Show</h2>
+            <br><br>
+            <div>
+                <label for="titleInput" class="form-label">Title:</label>
+                <br>
+                <input type="text" class="form-control" name="titleInput">
+            </div>   
+            <div> 
+                <label for="Network" class="form-label">Network:</label>
+                <br>
+                <input type="text" class="form-control" name="networkInput">
+            </div>
+            <div>
+                <label for="dateInput" class="form-label">Release Date:</label>
+                <input type="date" name="dateInput" id="dateInput">
+            </div>
+            <div> 
+                <label for="Desciption" class="form-label">Description:</label>
+                <br>
+                <textarea type="textarea" class="form-control" name="descriptionInput" rows="10" , cols="50"></textarea>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Create</button>
+                <a href="/shows">Go Back</a>
+            </div>
+        </form>
+        
+    </div>
+</body>
+</html>

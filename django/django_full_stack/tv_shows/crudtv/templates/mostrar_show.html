@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostrar el Show Creado</title>
+</head>
+<body>
+    <div >
+        <h2>TV Show {{ nuevo_show.id }}</h2><br>
+        <span>Title: {{ nuevo_show.title }}</span><br>
+        <span>Network: {{ nuevo_show.network }}</span><br>
+        <span>Release Date: {{ nuevo_show.release_date }}</span><br>
+        <span>Description: {{ nuevo_show.description }}</span>
+        <br><br><br>
+        <span>Last Updated: {{ nuevo_show.updated_at }}</span>
+        <br>
+        <a href="/shows/{{nuevo_show.id}}/edit">Edit</a> <a href="/shows/{{nuevo_show.id}}/delete">Delete</a>
+    </div>
+    <div><a href="/shows">Go Back</a></div>
+</body>
+</html>

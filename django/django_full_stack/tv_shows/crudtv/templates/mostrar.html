@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio TV SHOW</title>
+</head>
+<body>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Network</th>
+                    <th scope="col">Release Date</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for showtv in shows_tot %}
+                <tr>
+                    <td>{{showtv.id}}</td>
+                    <td>{{showtv.title}}</td>
+                    <td>{{showtv.network}}</td>
+                    <td>{{showtv.release_date}}</td>
+                    <td><a href="/shows/{{showtv.id}}">Show</a>   
+                        <a href="/shows/{{showtv.id}}/edit">Edit</a>   
+                        <a href="/shows/{{showtv.id}}/delete">Delete</a>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+    </div>
+    <br><a href="/shows/new">Add a New Shows</a>
+    </div>
+</body>
+</html>
