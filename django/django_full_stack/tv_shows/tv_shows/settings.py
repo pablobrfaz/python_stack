@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-^--+)d(-96_^hx$ymg)h_mjv*nz!jys#^0epcuvckp4i=#w_i3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['Tvshow-env.eba-r8tgiymx.us-east-1.elasticbeanstalk.com','127.0.0.1' ]
 
 
 # Application definition
